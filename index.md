@@ -9,6 +9,7 @@ This portfolio will detail any and all appropriate software work that I have com
 # John Lemon's Haunted Jaunt
 
 <img src="\images\JLHJ.png">
+<em>Image taken from Unity Learn website</em>
 
 My first journey into Unity, this is a 3D microgame that taught me the basics of the Unity software. These basics involved 3D rendering, camera setup, and C# scripting. It is as simple as games come, with a clear goal, obstacles, and an ending that quits the program.
 
