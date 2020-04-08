@@ -1,0 +1,68 @@
+Base path: /Applications/Unity/Hub/Editor/2019.1.14f1/Unity.app/Contents
+Cmd: initializeCompiler
+Cmd: preprocessCompute
+  insize=2053 outsize=2059 ok=1
+Cmd: compileComputeKernel
+  api=14 insize=2059 outsize=789 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=841 outsize=785 ok=1
+Cmd: preprocessCompute
+  insize=1170 outsize=1176 ok=1
+Cmd: preprocessCompute
+  insize=3064 outsize=3070 ok=1
+Cmd: preprocessCompute
+  insize=10871 outsize=10881 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=10881 outsize=10593 ok=1
+Cmd: compileComputeKernel
+  api=14 insize=10881 outsize=10709 ok=1
+Cmd: compileComputeKernel
+  api=14 insize=10881 outsize=11453 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=11297 outsize=22357 ok=1
+Cmd: preprocessCompute
+  insize=4847 outsize=4855 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=4855 outsize=5437 ok=1
+Cmd: compileComputeKernel
+  api=14 insize=4855 outsize=5549 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=5397 outsize=7573 ok=1
+Cmd: preprocessCompute
+  insize=3390 outsize=3396 ok=1
+Cmd: compileComputeKernel
+  api=14 insize=3396 outsize=3445 ok=1
+Cmd: preprocessCompute
+  insize=18277 outsize=18299 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=18299 outsize=8781 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=18299 outsize=10377 ok=1
+Cmd: compileComputeKernel
+  api=14 insize=18299 outsize=9953 ok=1
+Cmd: compileComputeKernel
+  api=14 insize=18299 outsize=11321 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=9637 outsize=16465 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=9405 outsize=16213 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=11489 outsize=25117 ok=1
+Cmd: preprocessCompute
+  insize=5431 outsize=5435 ok=1
+Cmd: preprocessCompute
+  insize=1953 outsize=1957 ok=1
+Cmd: preprocessCompute
+  insize=3066 outsize=3072 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=853 outsize=785 ok=1
+Cmd: preprocessCompute
+  insize=1800 outsize=1806 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=1145 outsize=1433 ok=1
+Cmd: preprocessCompute
+  insize=1448 outsize=1454 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=1193 outsize=1313 ok=1
+Cmd: preprocessCompute
+  insize=2038 outsize=2044 ok=1
