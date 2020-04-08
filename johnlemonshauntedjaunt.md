@@ -1,8 +1,7 @@
 ---
 layout: default
+title: John Lemon's Haunted Jaunt
 ---
-
-# John Lemon's Haunted Jaunt
 
 My first journey into Unity, this is a 3D microgame that taught me the basics of the Unity software. These basics involved 3D rendering, camera setup, and C# scripting. It is as simple as games come, with a clear goal, obstacles, and an ending that quits the program.
 
