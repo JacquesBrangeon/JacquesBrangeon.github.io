@@ -2,11 +2,11 @@
 layout: default
 ---
 
-## About This Page
+# About This Page
 
 This portfolio will detail any and all appropriate software work that I have completed and am currently working on. I will aim to expand it whenever applicable. As of right now, this work will be limited to projects that I have worked on with the use of Unity Learn's free online tools and assests.
 
-## John Lemon's Haunted House
+# John Lemon's Haunted Jaunt
 
 My first journey into Unity, this is a 3D microgame that taught me the basics of the Unity software. These basics involved 3D rendering, camera setup, and C# scripting. It is as simple as games come, with a clear goal, obstacles, and an ending that quits the program.
 
