@@ -7,4 +7,4 @@ My first journey into Unity, this is a 3D microgame that taught me the basics of
 
 The entire project was completed in roughly 6 hours, which should be the first insight into my work pace. Given the state of the world at the time of writing (April 2020), I hope to continue to work on this project to add my own small adjustments with the amount of free time I currently find myself having.
 
-The Git repository for the project can be found [here](https://github.com/JacquesBrangeon/JacquesBrangeon.github.io/tree/master/john_lemons_haunted_jaunt), and a download for the game will be available for both OSX and Windows once I've worked out how to do Git releases.
+The Git repository for the project can be found [here](https://github.com/JacquesBrangeon/JacquesBrangeon.github.io/tree/master/john_lemons_haunted_jaunt), and a download for the game is available for OSX [here](https://github.com/JacquesBrangeon/JacquesBrangeon.github.io/releases/tag/1.0.0) and will be so for Windows soon.
