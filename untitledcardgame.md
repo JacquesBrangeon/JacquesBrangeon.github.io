@@ -13,4 +13,4 @@ The next steps after this demo "goes up" will likely be for me to work on the lo
 
 It must be noted that all card art in this game has made use of SMITE assets that are the property of HiRez Studios. I have made multiple attempts to reach out to the legal team to clarify that I have the right to use these in a game that is not intended for the production of revenue, but I am yet to get a response.
 
-If you would like to try out this game, I will soon be writing a guide for setting it up and the repository is [here](https://github.com/JacquesBrangeon/JacquesBrangeon.github.io/tree/master/untitled_card_game). There are still a few bugs right now, such as the mana system, and the game still looks like garbage, but these are thing I hope to fix in the near future.
+If you would like to try out this game, there is a guide for setting up the game [here](./ucg_setup), and the repository is [here](https://github.com/JacquesBrangeon/JacquesBrangeon.github.io/tree/master/untitled_card_game). There are still a few bugs right now, such as the mana system, and the game still looks like garbage, but these are thing I hope to fix in the near future.
