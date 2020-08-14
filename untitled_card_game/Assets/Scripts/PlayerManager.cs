@@ -10,6 +10,19 @@ public class PlayerManager : NetworkBehaviour
     public GameObject EnemyArea;
     public GameObject PlayerDropZone;
     public GameObject EnemyDropZone;
+    public GameManager GameManager;
+    public GameObject PlayerHolder;
+    public GameObject EnemyHolder;
+
+    public GameObject thisPlayer;
+    public GameObject enemyPlayer;
+
+    [SyncVar]
+    public bool IsMyTurn = false;
+
+    [SyncVar]
+    public int PlayerMana = 0;
+    public int EnemyMana = 0;
 
     // List of cards
     public List<GameObject> Cards;
@@ -33,6 +46,23 @@ public class PlayerManager : NetworkBehaviour
         EnemyArea = GameObject.Find("EnemyArea");
         PlayerDropZone = GameObject.Find("PlayerDropZone");
         EnemyDropZone = GameObject.Find("EnemyDropZone");
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        PlayerHolder = GameObject.Find("PlayerHolder");
+        EnemyHolder = GameObject.Find("EnemyHolder");
+        thisPlayer = GameObject.Find("Player");
+        enemyPlayer = GameObject.Find("Enemy");
+
+        if (isClientOnly)
+        {
+            IsMyTurn = true;
+            PlayerMana++;
+            thisPlayer.GetComponent<PlayerDisplay>().NewTurnManaChange(PlayerMana);
+        }
+        else
+        {
+            EnemyMana++;
+            enemyPlayer.GetComponent<PlayerDisplay>().NewTurnManaChange(EnemyMana);
+        }
     }
 
     [Server]
@@ -43,24 +73,81 @@ public class PlayerManager : NetworkBehaviour
         base.OnStartServer();
     }
 
-    [Command]
-    public void CmdDealCards()
+    /*[Command]
+    public void CmdPlayerSpawn()
     {
-        for (int i = 0; i < 5; i++)
+        GameObject player = Instantiate(Player, new Vector2(0, 0), Quaternion.identity);
+        NetworkServer.Spawn(player, connectionToClient);
+        RpcShowPlayer(player);
+    }
+
+    [ClientRpc]
+    void RpcShowPlayer(GameObject player)
+    {
+        if (hasAuthority)
         {
-            // Instantiate a new card 5 times
-            GameObject newCard = Instantiate(Cards[Random.Range(0, Cards.Count)], new Vector2(0, 0), Quaternion.identity);
+            player.transform.SetParent(PlayerHolder.transform, false);
+            thisPlayer = player;
+        }
+        else
+        {
+            player.transform.SetParent(EnemyHolder.transform, false);
+            enemyPlayer = player;
+        }
+    }*/
 
-            // Spawn card, authority given to client
-            NetworkServer.Spawn(newCard, connectionToClient);
+    [Command]
+    public void CmdDealCards(int number)
+    {
+        if (number == 3)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                // Instantiate a new card 3 times
+                GameObject newCard = Instantiate(Cards[Random.Range(0, Cards.Count)], new Vector2(0, 0), Quaternion.identity);
 
-            // Call the Rpc
-            RpcShowCard(newCard, "Dealt");
+                // Spawn card, authority given to client
+                NetworkServer.Spawn(newCard, connectionToClient);
+
+                // Call the Rpc
+                RpcShowCard(newCard, "Dealt");
+            }
+            RpcGMChangeState("End Turn");
+        }
+        else if (number == 1)
+        {
+            {
+                // Instantiate a new card 1 time
+                GameObject newCard = Instantiate(Cards[Random.Range(0, Cards.Count)], new Vector2(0, 0), Quaternion.identity);
+
+                // Spawn card, authority given to client
+                NetworkServer.Spawn(newCard, connectionToClient);
+
+                // Call the Rpc
+                RpcShowCard(newCard, "Dealt");
+            }
+        }
+    }
+
+    [ClientRpc]
+    void RpcGMChangeState(string stateRequest)
+    {
+        GameManager.ChangeGameState(stateRequest);
+
+        if (stateRequest == "End Turn")
+        {
+            GameManager.ChangeReadyClicks();
         }
     }
 
     public void PlayCard(GameObject card)
     {
+        if (card.GetComponent<CardDisplay>().manaCost > PlayerMana)
+        {
+            Debug.Log("You do not have enough mana to play this card yet");
+            //return;
+        }
+
         CmdPlayCard(card);
         cardsPlayed++;
         Debug.Log(cardsPlayed);
@@ -123,6 +210,11 @@ public class PlayerManager : NetworkBehaviour
         player.GetComponent<PlayerDisplay>().healthText.text = health.ToString();
 
         Debug.Log("Player took " + damage.ToString() + " damage");
+
+        if (health <= 0)
+        {
+            GameManager.EndGame(player);
+        }
     }
 
     [Command]
@@ -157,9 +249,9 @@ public class PlayerManager : NetworkBehaviour
     [Command]
     void CmdDestroy(GameObject destroyedCard)
     {
-        NetworkServer.Destroy(destroyedCard);
-
         RpcHideZoom(destroyedCard);
+
+        NetworkServer.Destroy(destroyedCard);
 
         string destroyedName = destroyedCard.GetComponent<CardDisplay>().nameText.text;
 
@@ -175,6 +267,41 @@ public class PlayerManager : NetworkBehaviour
     [ClientRpc]
     void RpcHideZoom(GameObject destroyedCard)
     {
+        destroyedCard.GetComponent<CardZoom>().CanZoom = false;
         destroyedCard.GetComponent<CardZoom>().OnHoverExit();
+    }
+
+    [Command]
+    public void CmdSwitchTurns()
+    {
+        RpcSwitchTurns();
+    }
+
+    [ClientRpc]
+    void RpcSwitchTurns()
+    {
+        Debug.Log("RPCSwitchTurns begins");
+        Debug.Log("Current value = " + IsMyTurn);
+
+        PlayerManager pm = NetworkClient.connection.identity.GetComponent<PlayerManager>();
+        pm.IsMyTurn = !pm.IsMyTurn;
+
+        Debug.Log("Turns have been switched");
+        Debug.Log(pm.IsMyTurn);
+
+        if (pm.IsMyTurn)
+        {
+            Debug.Log("It is now your turn");
+            PlayerMana++;
+            thisPlayer.GetComponent<PlayerDisplay>().NewTurnManaChange(PlayerMana);
+
+            GameManager.ChangeGameState("Draw Card");
+        }
+        else
+        {
+            EnemyMana++;
+            enemyPlayer.GetComponent<PlayerDisplay>().NewTurnManaChange(EnemyMana);
+            Debug.Log("It it now the enemy's turn");
+        }
     }
 }

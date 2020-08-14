@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneId: 2889225270
+  sceneId: 0
   serverOnly: 0
-  m_AssetId: 
+  m_AssetId: 527bc204c259c45f8a060ad03b8f449f
   hasSpawned: 0
 --- !u!114 &5097793155133321361
 MonoBehaviour:
@@ -85,8 +85,17 @@ MonoBehaviour:
   EnemyArea: {fileID: 0}
   PlayerDropZone: {fileID: 0}
   EnemyDropZone: {fileID: 0}
+  GameManager: {fileID: 0}
+  PlayerHolder: {fileID: 0}
+  EnemyHolder: {fileID: 0}
+  thisPlayer: {fileID: 0}
+  enemyPlayer: {fileID: 0}
+  IsMyTurn: 0
+  PlayerMana: 0
+  EnemyMana: 0
   Cards:
   - {fileID: 4592750357944906312, guid: b80780c87c2064624ac196362a07fd0f, type: 3}
   - {fileID: 6534414762316630157, guid: 91de9a31bfbe947ff808499af50a9f16, type: 3}
+  - {fileID: 1855921271662402060, guid: 4ffa7cbc106e4419aa2f84a116b3ed0e, type: 3}
   SelectedCard: {fileID: 0}
   AttackedCard: {fileID: 0}

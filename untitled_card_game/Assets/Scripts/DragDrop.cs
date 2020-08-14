@@ -8,6 +8,7 @@ public class DragDrop : NetworkBehaviour
     public GameObject Canvas;
     public GameObject PlayerDropZone;
     public PlayerManager PlayerManager;
+    public GameObject Player;
 
     private bool isDragging = false;
     private bool isOverDropZone = false;
@@ -20,6 +21,9 @@ public class DragDrop : NetworkBehaviour
     {
         Canvas = GameObject.Find("Main Canvas");
         PlayerDropZone = GameObject.Find("PlayerDropZone");
+
+        NetworkIdentity networkIdentity = NetworkClient.connection.identity;
+        PlayerManager = networkIdentity.GetComponent<PlayerManager>();
 
         if (!hasAuthority)
         {
@@ -60,17 +64,26 @@ public class DragDrop : NetworkBehaviour
 
     public void EndDrag()
     {
-        if(!isDraggable) return;
+        if (!isDraggable) return;
 
         isDragging = false;
 
-        if (isOverDropZone)
+        Player = PlayerManager.thisPlayer;
+
+        if (Player.GetComponent<PlayerDisplay>().currentMana < gameObject.GetComponent<CardDisplay>().manaCost)
+        {
+            Debug.Log("You don't have enough mana to play this card yet");
+
+            transform.position = startPosition;
+            transform.SetParent(startParent.transform, false);
+
+            return;
+        }
+
+        if (isOverDropZone && PlayerManager.IsMyTurn)
         {
             transform.SetParent(PlayerDropZone.transform, false);
             isDraggable = false;
-
-            NetworkIdentity networkIdentity = NetworkClient.connection.identity;
-            PlayerManager = networkIdentity.GetComponent<PlayerManager>();
 
             PlayerManager.PlayCard(gameObject);
         }
@@ -79,5 +92,7 @@ public class DragDrop : NetworkBehaviour
             transform.position = startPosition;
             transform.SetParent(startParent.transform, false);
         }
+
+        Player.GetComponent<PlayerDisplay>().ManaChange(gameObject.GetComponent<CardDisplay>().manaCost);
     }
 }

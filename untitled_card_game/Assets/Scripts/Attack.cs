@@ -31,6 +31,14 @@ public class Attack : NetworkBehaviour
     // Card is selected or attacked on PointerDown
     public void CardClicked()
     {
+        NetworkIdentity networkIdentity = NetworkClient.connection.identity;
+        PlayerManager = networkIdentity.GetComponent<PlayerManager>();
+
+        if (PlayerManager.IsMyTurn == false)
+        {
+            return;
+        }
+
         playerDropZone = GameObject.Find("PlayerDropZone");
         enemyDropZone = GameObject.Find("EnemyDropZone");
 
@@ -59,17 +67,20 @@ public class Attack : NetworkBehaviour
         NetworkIdentity networkIdentity = NetworkClient.connection.identity;
         PlayerManager = networkIdentity.GetComponent<PlayerManager>();
 
-        PlayerManager.AttackedCard = cardClicked;
+        if (PlayerManager.SelectedCard != null)
+        {
+            PlayerManager.AttackedCard = cardClicked;
 
-        damageTo = PlayerManager.SelectedCard.GetComponent<CardDisplay>().attack;
-        damageFrom = PlayerManager.AttackedCard.GetComponent<CardDisplay>().attack;
+            damageTo = PlayerManager.SelectedCard.GetComponent<CardDisplay>().attack;
+            damageFrom = PlayerManager.AttackedCard.GetComponent<CardDisplay>().attack;
 
-        PlayerManager.CmdDamage(PlayerManager.AttackedCard, damageTo);
-        PlayerManager.CmdDamage(PlayerManager.SelectedCard, damageFrom);
+            PlayerManager.CmdDamage(PlayerManager.AttackedCard, damageTo);
+            PlayerManager.CmdDamage(PlayerManager.SelectedCard, damageFrom);
 
-        Debug.Log(PlayerManager.AttackedCard.GetComponent<CardDisplay>().nameText.text + " has been attacked");
+            Debug.Log(PlayerManager.AttackedCard.GetComponent<CardDisplay>().nameText.text + " has been attacked");
 
-        PlayerManager.SelectedCard = null;
-        PlayerManager.AttackedCard = null;
+            PlayerManager.SelectedCard = null;
+            PlayerManager.AttackedCard = null;
+        }
     }
 }

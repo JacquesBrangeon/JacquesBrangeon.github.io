@@ -8,6 +8,8 @@ public class CardZoom : MonoBehaviour
     public GameObject EnemyArea;
     public GameObject ZoomCard;
 
+    public bool CanZoom = true;
+
     private GameObject newZoomCard;
 
     public void Awake()
@@ -18,6 +20,7 @@ public class CardZoom : MonoBehaviour
 
     public void OnHoverEnter()
     {
+        if (!CanZoom) return;
         // Allow hovering only when not in enemy hand
         if (gameObject.transform.parent != EnemyArea.transform)
         {

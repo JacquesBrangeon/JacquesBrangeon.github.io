@@ -7,6 +7,9 @@ public class PlayerDisplay : MonoBehaviour
 {
     public Text healthText;
     public int health;
+    public Text manaText;
+    public int currentMana;
+    public int maxMana;
 
     public int maxHealth = 20;
 
@@ -15,6 +18,8 @@ public class PlayerDisplay : MonoBehaviour
     {
         health = maxHealth;
         healthText.text = health.ToString();
+
+        manaText.text = currentMana.ToString() + " / " + maxMana.ToString();
     }
 
     public void Heal(int healValue)
@@ -27,5 +32,25 @@ public class PlayerDisplay : MonoBehaviour
             health = maxHealth;
         }
         healthText.text = health.ToString();
+    }
+
+    public void NewTurnManaChange(int manaNow)
+    {
+        if (maxMana >= 10)
+        {
+            // Do nothing
+        }
+        else
+        {
+            maxMana = manaNow;
+            currentMana = maxMana;
+            manaText.text = currentMana.ToString() + " / " + maxMana.ToString();
+        }
+    }
+
+    public void ManaChange(int manaCost)
+    {
+        currentMana -= manaCost;
+        manaText.text = currentMana.ToString() + " / " + maxMana.ToString();
     }
 }

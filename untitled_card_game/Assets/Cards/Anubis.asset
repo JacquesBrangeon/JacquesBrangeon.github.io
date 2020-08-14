@@ -15,6 +15,6 @@ MonoBehaviour:
   name: Anubis
   description: Has lifesteal
   artwork: {fileID: 21300000, guid: ff4eb08b14ebc4df5aeed59536c87944, type: 3}
-  manaCost: 3
+  manaCost: 4
   attack: 3
   health: 5

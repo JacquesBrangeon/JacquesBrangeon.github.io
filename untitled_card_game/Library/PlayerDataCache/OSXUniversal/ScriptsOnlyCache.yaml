@@ -9,13 +9,12 @@ ScriptsOnlyBuild:
     - DebugLogDisplay
     - DragDrop
     - DrawCards
+    - GameManager
     - PlayerDisplay
     - PlayerManager
     - PopulateZoom
     Mirror.Components.dll:
     - Mirror.NetworkTransform
-    Mirror.Examples.dll:
-    - Mirror.Examples.Chat.Player
     Mirror.dll:
     - Mirror.NetworkIdentity
     - Mirror.NetworkManager
@@ -70,49 +69,49 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9332}
     - Class: 114
-      Script: {instanceID: 9402}
-    - Class: 114
-      Script: {instanceID: 9448}
+      Script: {instanceID: 9404}
     - Class: 114
       Script: {instanceID: 9450}
     - Class: 114
-      Script: {instanceID: 9456}
+      Script: {instanceID: 9452}
     - Class: 114
       Script: {instanceID: 9458}
     - Class: 114
-      Script: {instanceID: 9462}
+      Script: {instanceID: 9460}
     - Class: 114
       Script: {instanceID: 9464}
     - Class: 114
-      Script: {instanceID: 9470}
+      Script: {instanceID: 9466}
     - Class: 114
-      Script: {instanceID: 9506}
+      Script: {instanceID: 9472}
     - Class: 114
       Script: {instanceID: 9508}
     - Class: 114
-      Script: {instanceID: 9540}
+      Script: {instanceID: 9510}
     - Class: 114
-      Script: {instanceID: 10022}
+      Script: {instanceID: 9542}
     - Class: 114
-      Script: {instanceID: 10036}
+      Script: {instanceID: 10024}
     - Class: 114
-      Script: {instanceID: 10110}
+      Script: {instanceID: 10038}
     - Class: 114
-      Script: {instanceID: 10156}
+      Script: {instanceID: 10112}
     - Class: 114
-      Script: {instanceID: 10234}
+      Script: {instanceID: 10158}
     - Class: 114
-      Script: {instanceID: 10556}
+      Script: {instanceID: 10236}
     - Class: 114
-      Script: {instanceID: 10676}
+      Script: {instanceID: 10558}
     - Class: 114
-      Script: {instanceID: 10692}
+      Script: {instanceID: 10678}
     - Class: 114
-      Script: {instanceID: 10724}
+      Script: {instanceID: 10726}
     - Class: 114
-      Script: {instanceID: 10814}
+      Script: {instanceID: 10794}
     - Class: 114
-      Script: {instanceID: 10894}
+      Script: {instanceID: 10818}
+    - Class: 114
+      Script: {instanceID: 10898}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -160,7 +159,7 @@ ScriptsOnlyBuild:
     className: NetworkManagerHUD
   - hash:
       serializedVersion: 2
-      Hash: 5642ec742206d262fad7054cece83b84
+      Hash: dc878410390fe5f13bb04f60942a0e8f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DragDrop
@@ -182,6 +181,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_ScrollbarEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: e52d087e87a0e8864518fe32711dfec2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DefaultDeck
   - hash:
       serializedVersion: 2
       Hash: 265cf1537361bce87401ba1fba27baf3
@@ -832,7 +837,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 34144cbac8031b3963a391ca5eaef999
+      Hash: 874698bde9c5667edd0fda612294fa65
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerDisplay
@@ -898,7 +903,7 @@ ScriptsOnlyBuild:
     className: NetworkRoomPlayer
   - hash:
       serializedVersion: 2
-      Hash: 5877f9d832f3a84fac18aa5d2a39c557
+      Hash: a25251de8ebeb43e713e0794276dd71d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CardZoom
@@ -1090,7 +1095,7 @@ ScriptsOnlyBuild:
     className: MarkerTrack
   - hash:
       serializedVersion: 2
-      Hash: c7bac0ae5e9616a5ee29680f699c3819
+      Hash: 3acd54957fdf4b661eb9e58440681d50
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerManager
@@ -1142,6 +1147,12 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror.Discovery
     className: NetworkDiscovery
+  - hash:
+      serializedVersion: 2
+      Hash: 217e1059caecdd89db19e8165953622d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameManager
   - hash:
       serializedVersion: 2
       Hash: 216c4bcd126c22b93d86c49174ecd34d
@@ -1210,7 +1221,7 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: ec0dd865a06b258fdadaaa60bcccb43f
+      Hash: b51cfef88f7a5044fc80097ec808f50b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DrawCards
