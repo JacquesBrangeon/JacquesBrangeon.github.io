@@ -15,3 +15,5 @@ This portfolio will detail any and all appropriate software work that I have com
 
 <img src="\images\JLHJ.png">
 <em>Image taken from Unity Learn website</em>
+
+# [Contact Me](./contact_me)
